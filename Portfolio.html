@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Data Engineering Portfolio</title>
+    <style>
+        /* Modern & Clean Styling */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Shared Grid Layout across portfolio elements */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* About Me Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-image-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+            object-fit: cover;
+        }
+
+        .tech-stack {
+            margin-top: 1.5rem;
+        }
+
+        .tech-stack span {
+            display: inline-block;
+            background-color: var(--card-bg);
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Flipping Cards Section */
+        .flip-card {
+            background-color: transparent;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-front {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .card-front h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .click-hint {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-back {
+            background-color: #1e293b;
+            color: var(--text-color);
+            transform: rotateY(180deg);
+            border-color: var(--accent-color);
+        }
+
+        /* Static Cards (Projects, Others, Contact) */
+        .static-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .static-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        /* Clickable Project Card Configurations */
+        a.static-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .static-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-tags {
+            margin-top: 1rem;
+        }
+
+        .project-tags span {
+            font-size: 0.8rem;
+            background: #0f172a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Interactive Elements styling inside cards */
+        .static-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .static-card a:hover {
+            text-decoration: underline;
+        }
+
+        .section-desc {
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">AI & Data Eng.</div>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#others">Others</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-image-wrapper">
+                <img src="your-profile-picture.jpg" alt="Ngan Kwan Teng" class="about-image">
+            </div>
+            <div class="about-text">
+                <p>Hello! I am a student of Nanyang Polytechnic pursuing a degree in AI and Data Engineering. Throughout the years, I have developed a strong passion for leveraging data to drive innovation and solve real-world problems.</p>
+                <br>
+                <p>With a strong foundation in both software engineering and statistical analysis, I focus on optimizing data workflows, ensuring data quality, and turning raw data into actionable intelligence.</p>
+                
+                <h3 style="margin-top: 2rem; color: var(--accent-color);">Core Stack</h3>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="portfolio-grid">
+            
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="card-front">
+                        <h3>Cybersecurity</h3>
+                        <p>Data Governance & Privacy Protection</p>
+                        <p class="click-hint">Click to read details</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Creating secure data pipelines and implementing best practices for data governance and compliance. Ensuring data privacy and protection in all stages of the data lifecycle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="card-front">
+                        <h3>Machine Learning Systems</h3>
+                        <p>Predictive Modeling & AI Integration</p>
+                        <p class="click-hint">Click to read details</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Developing, training, and deploying predictive models. Integrating AI capabilities into existing production systems with a focus on performance and low latency.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="card-front">
+                        <h3>Sensor Data & Control</h3>
+                        <p>Intelligent Control System Development</p>
+                        <p class="click-hint">Click to read details</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Analyzing sensor data to extract meaningful insights and developing intelligent control systems that can adapt and respond to changing conditions in real-time.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="portfolio-grid">
+            
+            <a href="SmartGardening.html" class="static-card">
+                <div>
+                    <h3>IoT Smart Gardening System</h3>
+                    <p>Built a real-time data ingestion and analysis system for monitoring and optimizing plant growth conditions.</p>
+                </div>
+                <div class="project-tags">
+                    <span>Arduino</span>
+                    <span>Raspberry Pi</span>
+                    <span>Python</span>
+                    <span>SQL</span>
+                </div>
+            </a>
+
+            <a href="DataAnalytic.html" class="static-card">
+                <div>
+                    <h3>Data Analytics Project</h3>
+                    <p>Gathering datas and learning the trends.</p>
+                </div>
+                <div class="project-tags">
+                    <span>MLflow</span>
+                    <span>AWS</span>
+                    <span>Python</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+    
+    <section id="others">
+        <h2>Others</h2>
+        <p class="section-desc">In addition to my core skills, I have experience with various tools and technologies that complement my work in AI and Data Engineering:</p>
+        
+        <div class="portfolio-grid">
+            <div class="static-card">
+                <h3>Version Control</h3>
+                <p>Proficient in Git for structured code management, branching workflows, and team collaboration.</p>
+            </div>
+            <div class="static-card">
+                <h3>Containerization</h3>
+                <p>Experience with Docker for creating, deploying, and running isolated engineering applications reliably in containers.</p>
+            </div>
+            <div class="static-card">
+                <h3>CI/CD Pipelines</h3>
+                <p>Familiar with automation tools like Jenkins and GitHub Actions for continuous integration and automated software deployment cycles.</p>
+            </div>
+            <div class="static-card">
+                <h3>Data Visualization</h3>
+                <p>Skilled in analytical reporting dashboards using tools like Tableau and Power BI to extract complex trends visually.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p class="section-desc">If you would like to discuss projects or job opportunities, feel free to reach out directly through the channels below:</p>
+        
+        <div class="portfolio-grid">
+            <div class="static-card">
+                <h3>Email Address</h3>
+                <p style="margin-bottom: 1rem;">Drop an inquiry or a message directly here:</p>
+                <a href="mailto:242308K@mymail.nyp.edu.sg">242308K@mymail.nyp.edu.sg</a>
+            </div>
+            <div class="static-card">
+                <h3>Phone number</h3>
+                <p style="margin-bottom: 1rem;">Here is my contact number for better communication</p>
+                <a href="tel:+6590994503">+65 9099 4503</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ngan Kwan Teng. Built for AI & Data Engineering Portfolio.</p>
+    </footer>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+</html>

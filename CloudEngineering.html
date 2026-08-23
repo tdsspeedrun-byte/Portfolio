@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Engineering on AWS - Details</title>
+    <style>
+        /* Consistent Portfolio Styling */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Navigation / Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            text-decoration: underline;
+        }
+
+        /* Project Header */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            background: var(--card-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        /* Architecture Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* AWS service badges */
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .service-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .service-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+
+        /* Screenshot / preview frame */
+        .site-preview {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 1rem;
+        }
+
+        /* Footer Action Button */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Portfolio.html" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>Cloud Engineering on AWS</h1>
+            <div class="project-meta">
+                <span class="tag">AWS</span>
+                <span class="tag">Cloud Infrastructure</span>
+                <span class="tag">Web Hosting</span>
+                <span class="tag">Python</span>
+            </div>
+            <p style="font-size: 1.2rem; color: #cbd5e1;">A cloud engineering project exploring core AWS services to design, deploy, and host a live website, covering compute, storage, and networking within the AWS ecosystem.</p>
+        </header>
+
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>This project focused on getting hands-on with core AWS services — provisioning cloud infrastructure, configuring storage and access, and deploying a website to the cloud. The goal was to understand how the different pieces of the AWS ecosystem fit together, from storing and serving static content to managing compute resources and access permissions.</p>
+            <p><em>Note: fill in or adjust the specific AWS services and steps below to match exactly what you configured for this project.</em></p>
+        </section>
+
+        <section id="services">
+            <h2>AWS Services Used</h2>
+            <p>Here are the core AWS services involved in the project:</p>
+            <div class="service-list">
+                <div class="service-badge"><span class="dot"></span> Amazon EC2</div>
+                <div class="service-badge"><span class="dot"></span> Amazon S3</div>
+                <div class="service-badge"><span class="dot"></span> Amazon RDS</div>
+                <div class="service-badge"><span class="dot"></span> IAM</div>
+                <div class="service-badge"><span class="dot"></span> Route 53</div>
+                <div class="service-badge"><span class="dot"></span> CloudWatch</div>
+            </div>
+        </section>
+
+        <section id="architecture">
+            <h2>Cloud Architecture</h2>
+            <p>The project was structured around a few key building blocks in AWS:</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Compute (EC2)</h3>
+                    <p>A virtual server was provisioned on Amazon EC2 to host and run the website, with security groups configured to control inbound and outbound traffic.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Storage (S3)</h3>
+                    <p>Static assets such as images, scripts, and stylesheets were stored in an S3 bucket, configured for reliable and scalable access.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Database (RDS)</h3>
+                    <p>A managed relational database on Amazon RDS was used to store application data, removing the need to manually manage database infrastructure.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Access Control (IAM)</h3>
+                    <p>IAM roles and policies were configured to enforce least-privilege access between services, keeping credentials and permissions scoped appropriately.</p>
+                </div>
+                <div class="card">
+                    <h3>5. Networking (Route 53)</h3>
+                    <p>Route 53 was used to manage DNS routing, pointing a domain name to the hosted website.</p>
+                </div>
+                <div class="card">
+                    <h3>6. Monitoring (CloudWatch)</h3>
+                    <p>CloudWatch was set up to track resource usage and application logs, providing visibility into the health of the deployed infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="website">
+            <h2>Deployed Website</h2>
+            <p>As part of the project, a website was built and deployed onto the AWS infrastructure above, demonstrating the full path from local development to a live, publicly accessible site running in the cloud.</p>
+        </section>
+
+        <video controls>
+            <source src="CloudEngineering.mp4" type="video/mp4">
+            <source src="CloudEngineering.ogg" type="video/ogg">
+        </video>
+
+    </div>
+
+</body>
+</html>

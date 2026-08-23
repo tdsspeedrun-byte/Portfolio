@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyroscope-Based Fall Detection System - Details</title>
+    <style>
+        /* Consistent Portfolio Styling */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Navigation / Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            text-decoration: underline;
+        }
+
+        /* Project Header */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            background: var(--card-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        /* Architecture Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Status classification list */
+        .status-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .status-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .status-card.normal { border-left-color: #10b981; }
+        .status-card.near-miss { border-left-color: #f59e0b; }
+        .status-card.fall { border-left-color: #f43f5e; }
+
+        .status-card h3 {
+            color: #fff;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: #0b0f19;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #38bdf8;
+            margin-top: 1rem;
+        }
+
+        .code-keyword { color: #f43f5e; }
+        .code-string { color: #10b981; }
+
+        /* Footer Action Button */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Portfolio.html" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>Gyroscope-Based Fall Detection System</h1>
+            <div class="project-meta">
+                <span class="tag">Arduino</span>
+                <span class="tag">Gyroscope</span>
+                <span class="tag">Python</span>
+                <span class="tag">Data Cleaning</span>
+                <span class="tag">Real-time Analytics</span>
+                <span class="tag">Web Dashboard</span>
+            </div>
+            <p style="font-size: 1.2rem; color: #cbd5e1;">A real-time data engineering pipeline that captures a person's movement using a gyroscope, cleans and classifies the motion data, and visualizes it live on a web dashboard to flag normal movement, near-misses, and falls.</p>
+        </header>
+
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>My teammates and I built a real-time fall detection pipeline using a gyroscope mounted on an Arduino/microcontroller setup. The gyroscope continuously streams orientation and angular velocity data as the wearer moves, which is then cleaned and processed to distinguish between normal movement, a near-miss (a sudden loss of balance that is recovered), and an actual fall.</p>
+            <p>To make the system usable in practice, we built a companion website that displays the incoming movement data as a real-time graph, so a caregiver or the wearer themselves can monitor activity and instantly see when an alert is triggered.</p>
+        </section>
+
+        <section id="architecture">
+            <h2>Data Pipeline Architecture</h2>
+            <p>The system is built as a streaming pipeline that takes raw sensor readings all the way through to a live visual on the web:</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Ingestion (Gyroscope + Arduino)</h3>
+                    <p>The gyroscope continuously measures angular velocity and orientation as the wearer moves. Raw readings are sampled at a fixed interval and transmitted from the Arduino to the processing layer over serial/Wi-Fi.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Data Cleaning (Python)</h3>
+                    <p>Incoming readings are filtered to remove sensor noise and jitter, timestamps are aligned, and missing or corrupted samples are handled before any classification is done. This ensures the downstream detection logic isn't triggered by noisy or spurious spikes.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Movement Classification (Python)</h3>
+                    <p>Cleaned angular velocity and orientation values are analyzed against threshold and pattern-based rules to classify each moment as normal movement, a near-miss, or a fall event.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Storage (SQL)</h3>
+                    <p>Cleaned readings and classified events are stored in a SQL database, enabling historical review of movement patterns and past alerts.</p>
+                </div>
+                <div class="card">
+                    <h3>5. Visualization (Web Dashboard)</h3>
+                    <p>A web front-end pulls the live and historical data and renders it as a real-time graph, updating continuously as new readings come in and highlighting near-miss and fall events on the timeline.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="classification">
+            <h2>Movement Classification</h2>
+            <p>After cleaning, each segment of motion data is classified into one of three states:</p>
+
+            <div class="status-list">
+                <div class="status-card normal">
+                    <h3>Normal</h3>
+                    <p>Angular velocity and orientation stay within expected ranges for typical activity such as walking, sitting, or standing.</p>
+                </div>
+                <div class="status-card near-miss">
+                    <h3>Near-Miss</h3>
+                    <p>A sudden, sharp change in orientation or angular velocity is detected, followed by a quick recovery back to a stable state — indicating a stumble or loss of balance that didn't result in a fall.</p>
+                </div>
+                <div class="status-card fall">
+                    <h3>Fall</h3>
+                    <p>A sharp orientation change is detected with no recovery within the expected window, followed by a sustained period of little to no movement — indicating the wearer has fallen.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard">
+            <h2>Real-Time Web Dashboard</h2>
+            <p>To make the pipeline useful beyond raw logs, we built a lightweight website that graphs the gyroscope data as it streams in. The dashboard updates the chart live, colour-codes the current movement state, and raises a visible alert whenever a near-miss or fall is detected — so anyone monitoring the wearer can respond immediately.</p>
+        </section>
+
+        <video controls>
+            <source src="Engineering_vid.mp4" type="video/mp4">
+            <source src="Engineering_vid.ogg" type="video/ogg">
+        </video>
+
+    </div>
+
+</body>
+</html>

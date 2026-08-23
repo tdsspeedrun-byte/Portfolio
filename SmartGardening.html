@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Smart Gardening Light System - Details</title>
+    <style>
+        /* Consistent Portfolio Styling */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Navigation / Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            text-decoration: underline;
+        }
+
+        /* Project Header */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            background: var(--card-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        /* Architecture Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Light state list */
+        .status-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .status-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .status-card.low { border-left-color: #f43f5e; }
+        .status-card.normal { border-left-color: #10b981; }
+        .status-card.high { border-left-color: #f59e0b; }
+
+        .status-card h3 {
+            color: #fff;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        .status-card ul {
+            padding-left: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .status-card li {
+            color: #94a3b8;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer Action Button */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Portfolio.html" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>IoT Smart Gardening Light System</h1>
+            <div class="project-meta">
+                <span class="tag">Arduino</span>
+                <span class="tag">Light Sensor</span>
+                <span class="tag">Rotary Sensor</span>
+                <span class="tag">Respberry Pi</span>
+                <span class="tag">Real-time Analytics</span>
+                <span class="tag">Web Dashboard</span>
+            </div>
+            <p style="font-size: 1.2rem; color: #cbd5e1;">An IoT system that continuously monitors ambient light intensity for a garden, automatically warns the user when light is too low, lets them adjust the grow light via a rotary sensor, and displays the sensor readings over time on a live website.</p>
+        </header>
+
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>This project monitors the amount of light reaching a plant using a light sensor connected to an Arduino. When the detected light intensity falls below the set threshold, the system alerts the user with a warning light and a buzzer, prompting them to increase the light using a rotary sensor connected to a grow light. Once the intensity returns to an acceptable range, the alerts switch off automatically while the grow light stays on to maintain conditions. If the light intensity goes above the threshold, the grow light is switched off immediately to avoid over-exposing the plant.</p>
+            <p>All readings are logged and streamed to a companion website so the light levels can be viewed as a graph over time, making it easy to see trends and confirm the system is keeping conditions within range.</p>
+        </section>
+
+        <section id="architecture">
+            <h2>System Architecture</h2>
+            <p>The system combines sensing, actuation, and live visualization in a single pipeline:</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Sensing (Light Sensor + Arduino)</h3>
+                    <p>A light sensor continuously measures ambient light intensity around the plant and reports readings to the Arduino at a fixed interval.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Threshold Logic</h3>
+                    <p>The Arduino compares each reading against the configured lower and upper thresholds to decide whether the light level is too low, within range, or too high.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Actuation (Buzzer, Warning Light, Rotary Sensor)</h3>
+                    <p>Depending on the threshold result, the system switches the buzzer and warning light on or off, and controls the grow light connected to the rotary sensor accordingly.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Data Processing (Python)</h3>
+                    <p>Python scripts consume the incoming readings, clean and timestamp them, and prepare the data for storage and visualization.</p>
+                </div>
+                <div class="card">
+                    <h3>5. Storage (SQL)</h3>
+                    <p>Cleaned readings are stored in a SQL database, enabling historical review of light levels and system alerts over time.</p>
+                </div>
+                <div class="card">
+                    <h3>6. Visualization (Web Dashboard)</h3>
+                    <p>A website pulls the stored and live readings and renders them as a continuously updating graph, so light trends can be monitored remotely.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="behavior">
+            <h2>System Behaviour by Light Level</h2>
+            <p>The system responds differently depending on where the current reading falls relative to the threshold:</p>
+
+            <div class="status-list">
+                <div class="status-card low">
+                    <h3>Below Threshold</h3>
+                    <ul>
+                        <li>Warning light: ON</li>
+                        <li>Buzzer: ON</li>
+                        <li>Rotary sensor grow light: user adjusts it upward</li>
+                    </ul>
+                </div>
+                <div class="status-card normal">
+                    <h3>Within Threshold</h3>
+                    <ul>
+                        <li>Warning light: OFF</li>
+                        <li>Buzzer: OFF</li>
+                        <li>Rotary sensor grow light: stays ON to maintain the level</li>
+                    </ul>
+                </div>
+                <div class="status-card high">
+                    <h3>Above Threshold</h3>
+                    <ul>
+                        <li>Warning light: OFF</li>
+                        <li>Buzzer: OFF</li>
+                        <li>Rotary sensor grow light: turns OFF immediately</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard">
+            <h2>Real-Time Web Dashboard</h2>
+            <p>The companion website graphs the light intensity readings as they stream in, giving a clear view of how conditions change over the course of the day. It highlights periods where the light dropped below threshold and when the grow light was active, so the user can review how well the system is maintaining ideal growing conditions.</p>
+        </section>
+
+        <video controls>
+            <source src="242308K_EG1P54_videodemo.mp4" type="video/mp4">
+            <source src="242308K_EG1P54_videodemo.ogg" type="video/ogg">
+        </video>
+
+    </div>
+
+</body>
+</html>
